@@ -5,6 +5,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-refactor",
         "nvim-treesitter/nvim-treesitter-textobjects",
+        "RRethy/nvim-treesitter-textsubjects",
     },
     config = function()
         require("nvim-treesitter.configs").setup({
@@ -32,6 +33,9 @@ return {
                 "yaml",
                 "yang",
                 "xml",
+                "vimdoc",
+                "luadoc",
+                "vim",
             },
             highlight = {
                 enable = false,
@@ -107,6 +111,18 @@ return {
                     goto_previous_end = {
                         ["[F"] = "@function.outer",
                         ["[]"] = "@class.outer",
+                    },
+                },
+            },
+            textsubjects = {
+                enable = true,
+                prev_selection = ",", -- (Optional) keymap to select the previous selection
+                keymaps = {
+                    ["."] = "textsubjects-smart",
+                    [";"] = "textsubjects-container-outer",
+                    ["i;"] = {
+                        "textsubjects-container-inner",
+                        desc = "Select inside containers (classes, functions, etc.)",
                     },
                 },
             },

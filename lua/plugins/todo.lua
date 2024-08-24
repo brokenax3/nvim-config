@@ -4,6 +4,12 @@ return {
     lazy = false,
 
     config = function()
-        require("todo-comments").setup()
+        require("todo-comments").setup({
+            opts = {
+                highlight = {
+                    comments_only = false,
+                },
+            },
+        })
     end,
 }

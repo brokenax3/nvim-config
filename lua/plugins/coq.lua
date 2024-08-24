@@ -1,6 +1,7 @@
 -- Configuration for Neovim Completion
 return {
     "ms-jpq/coq_nvim",
+    lazy = false,
     branch = "coq",
     dependencies = {
         {
@@ -9,13 +10,12 @@ return {
         },
         { "ms-jpq/coq.thirdparty", branch = "3p" },
     },
-    config = function()
-        -- require("coq").setup({
-        --     coq_settings = {
-        --         keymap = {
-        --             bigger_preview = nil,
-        --         },
-        --     },
-        -- })
-    end,
+    -- init = function()
+    --     vim.g.coq_settings = {
+    --         auto_start = 'shut-up',
+    --         -- keymap = {
+    --         --     bigger_preview = nil,
+    --         -- },
+    --     }
+    -- end,
 }

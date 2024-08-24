@@ -17,6 +17,9 @@ return {
             folder = "daily",
             date_format = "%Y-%m-%d",
         },
+        -- completion = {
+        --     nvim_cmp = true,
+        -- },
         ui = {
             enable = true, -- set to false to disable all additional syntax features
             update_debounce = 200, -- update delay after a text change (in milliseconds)

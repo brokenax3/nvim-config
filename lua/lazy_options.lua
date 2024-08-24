@@ -12,10 +12,14 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
--- Requirement for coq
+-- Required for COQ to autostart
 vim.g.coq_settings = {
-    auto_start = true,
+    auto_start = 'shut-up',
+    keymap = {
+        bigger_preview = "",
+    },
 }
+
 require("lazy").setup({
     spec = { { import = "plugins" } },
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed

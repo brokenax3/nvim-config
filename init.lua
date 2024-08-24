@@ -1,10 +1,13 @@
 ------------------------------------------------------------------------
 --                     Configuration for Neovim                       --
 ------------------------------------------------------------------------
-require("keybindings")
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 require("lazy_options")
 require("options")
 require("custom_commands")
+require("keybindings")
 
 vim.api.nvim_command([[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]])
 
@@ -29,14 +32,22 @@ vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 
 -- AutoCommands
 -- Format files after writing
-vim.api.nvim_exec(
-    [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.cpp,*.c,*.h,*.py,*.lua,*.js,*.xml,*.yaml FormatWrite
-augroup END
-]],
-    true
-)
+-- vim.api.nvim_exec(
+--     [[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.cpp,*.c,*.h,*.py,*.lua,*.js,*.xml,*.yaml FormatWrite
+-- augroup END
+-- ]],
+--     true
+-- )
 
 vim.cmd("colorscheme citruszest")
+
+-- vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
+--     callback = function(args)
+--         if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
+--             vim.cmd("startinsert")
+--         end
+--     end,
+-- })

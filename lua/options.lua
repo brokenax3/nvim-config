@@ -71,7 +71,7 @@ vim.o.completeopt = "menu,menuone,noselect"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.guifont = "CozetteVector Nerd Font:h12"
+vim.o.guifont = "DaddyTimeMono Nerd Font:h14"
 ------------------------------------------------------------------------
 --                               Mouse                                --
 ------------------------------------------------------------------------
@@ -113,9 +113,10 @@ vim.wo.signcolumn = "yes"
 vim.o.timeout = false
 vim.o.ttimeoutlen = 200
 -- Set Undo and Swap file
-vim.o.undodir = "/Users/markle/.local/share/nvim/undo//"
-vim.o.backupdir = "/Users/markle/.local/share/nvim/backup//"
-vim.o.directory = "/Users/markle/.local/share/nvim/swap"
+local datapath = vim.fn.stdpath("data")
+vim.o.undodir = datapath .. "/undo/"
+vim.o.backupdir = datapath .. "/backup/"
+vim.o.directory = datapath .. "/swap/"
 vim.o.undofile = true
 vim.o.backup = true
 ------------------------------------------------------------------------
