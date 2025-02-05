@@ -1,6 +1,6 @@
 return {
     "Isrothy/neominimap.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false, -- NOTE: NO NEED to Lazy load
     -- Optional
     keys = {
@@ -16,6 +16,10 @@ return {
         vim.opt.sidescrolloff = 36 -- It's recommended to set a large value
         vim.g.neominimap = {
             auto_enable = true,
+        layout = "float",
+        win_filter = function(winid)
+            return winid == vim.api.nvim_get_current_win()
+        end,
         }
     end,
 }

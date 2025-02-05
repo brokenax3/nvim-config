@@ -36,10 +36,12 @@ return {
                 "vimdoc",
                 "luadoc",
                 "vim",
+                "robot",
             },
             highlight = {
-                enable = false,
+                enable = true,
                 additional_vim_regex_highlighting = { "markdown" },
+                disable = true,
             },
             indent = {
                 enable = true,

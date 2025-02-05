@@ -55,28 +55,34 @@ return {
                         Lua = {},
                     },
                 })
-            -- elseif server == "pylsp" then
-            --     local venv_path = os.getenv("VIRTUAL_ENV")
-            --     local py_path = nil
-            --     if venv_path ~= nil then
-            --         py_path = venv_path .. "/bin/python3"
-            --     else
-            --         py_path = vim.g.python3_host_prog
-            --     end
-            --     nvim_lsp[server].setup({
-            --         settings = {
-            --             plugins = {
-            --                 pylsp_mypy = {
-            --                     enabled = true,
-            --                     overrides = { "--python-executable", py_path, true },
-            --                     report_progress = true,
-            --                     live_mode = true,
-            --                 },
-            --                 jedi_completion = { fuzzy = true },
-            --                 capabilities = coq.lsp_ensure_capabilities(),
-            --             },
-            --         },
-            --     })
+            elseif server == "pylsp" then
+                local venv_path = os.getenv("VIRTUAL_ENV")
+                local py_path = nil
+                if venv_path ~= nil then
+                    py_path = venv_path .. "/bin/python3"
+                else
+                    py_path = vim.g.python3_host_prog
+                end
+                nvim_lsp[server].setup({
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                pylsp_mypy = {
+                                    enabled = true,
+                                    overrides = { "--python-executable", py_path, true },
+                                    report_progress = true,
+                                    live_mode = true,
+                                },
+                                jedi_completion = { fuzzy = true },
+                                capabilities = coq.lsp_ensure_capabilities(),
+                                pycodestyle = {
+                                    enabled = false,
+                                    maxLineLength = 120,
+                                },
+                            },
+                        },
+                    },
+                })
             else
                 nvim_lsp[server].setup(coq.lsp_ensure_capabilities())
             end

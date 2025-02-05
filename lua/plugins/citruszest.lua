@@ -8,7 +8,7 @@ return {
         require("citruszest").setup({
             option = {
                 transparent = false, -- Enable/Disable transparency
-                bold = false,
+                bold = true,
                 italic = true,
             },
             style = {
