@@ -28,6 +28,7 @@ vim.o.splitright = true
 -- Let GUI window title to be the file name
 vim.o.title = true
 
+vim.opt.termguicolors = true
 -- Always display the status line, even if only one window is displayed
 vim.o.laststatus = 2
 ------------------------------------------------------------------------

@@ -12,11 +12,17 @@ return {
                 italic = true,
             },
             style = {
-                markdownH1 = { fg = colors.red, bold = true },
-                markdownH2 = { fg = colors.yellow, bold = true },
-                markdownH3 = { fg = colors.blue, bold = true },
-                markdownH4 = { fg = colors.orange, bold = true },
-                markdownH5 = { fg = colors.green, bold = true },
+                rainbow1 = { fg = colors.bright_red },
+                rainbow2 = { fg = colors.bright_yellow },
+                rainbow3 = { fg = colors.bright_orange },
+                rainbow4 = { fg = colors.bright_green },
+                rainbow5 = { fg = colors.bright_blue },
+                rainbow6 = { fg = colors.bright_black },
+                -- markdownH1 = { link = "rainbow2", bold = true },
+                -- markdownH2 = { fg = colors.red, bold = true },
+                -- markdownH3 = { fg = colors.blue, bold = true },
+                -- markdownH4 = { fg = colors.orange, bold = true },
+                -- markdownH5 = { fg = colors.green, bold = true },
             }
         })
     end,

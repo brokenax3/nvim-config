@@ -4,8 +4,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-require("lazy_options")
 require("options")
+require("lazy_options")
 require("custom_commands")
 require("keybindings")
 
@@ -18,7 +18,7 @@ vim.g.loaded_gzip = 1
 vim.g.loaded_zipPlugin = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
-vim.o.background = ""
+vim.o.background = "dark"
 
 -- Spell Check in Markdown File
 -- vim.api.nvim_command([[autocmd FileType markdown setlocal spell]])
@@ -42,7 +42,7 @@ vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 --     true
 -- )
 
-vim.cmd("colorscheme citruszest")
+vim.cmd("colorscheme fluoromachine")
 
 -- vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
 --     callback = function(args)

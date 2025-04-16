@@ -11,12 +11,12 @@ return {
             -- "texlab",
             -- "bashls",
             -- "ccls",
-            "ansiblels",
-            "pylsp",
-            "yamlls",
-            "terraformls",
-            "rust_analyzer",
-            "lua_ls",
+            -- "ansiblels",
+            -- "pylsp",
+            -- "yamlls",
+            -- "terraformls",
+            -- "rust_analyzer",
+            -- "lua_ls",
             -- "tsserver",
         }
         local nvim_lsp = require("lspconfig")
