@@ -20,7 +20,7 @@ return {
     event = "VeryLazy",
     init = function()
         require("lualine").setup({
-            options = { theme = "fluoromachine" },
+            options = { theme = "citruszest" },
             sections = { lualine_c = { "require'lsp-status'.status()", "filename", project_name_display } },
         })
     end,

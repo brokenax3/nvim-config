@@ -4,6 +4,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+-- Disable deprecation warning
+vim.deprecate = function() end
+
 require("options")
 require("lazy_options")
 require("custom_commands")
@@ -30,19 +33,8 @@ vim.g.suda_smart_edit = 1
 -- Set Environment Variables for Ripgrep
 vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 
--- AutoCommands
--- Format files after writing
--- vim.api.nvim_exec(
---     [[
--- augroup FormatAutogroup
---   autocmd!
---   autocmd BufWritePost *.cpp,*.c,*.h,*.py,*.lua,*.js,*.xml,*.yaml FormatWrite
--- augroup END
--- ]],
---     true
--- )
 
-vim.cmd("colorscheme fluoromachine")
+vim.cmd("colorscheme citruszest")
 
 -- vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
 --     callback = function(args)
@@ -51,3 +43,37 @@ vim.cmd("colorscheme fluoromachine")
 --         end
 --     end,
 -- })
+--
+--
+
+-- Autocommands for FOCUS
+local ignore_filetypes = { 'neo-tree', 'trouble' }
+local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
+
+local augroup =
+    vim.api.nvim_create_augroup('FocusDisable', { clear = true })
+
+vim.api.nvim_create_autocmd('WinEnter', {
+    group = augroup,
+    callback = function(_)
+        if vim.tbl_contains(ignore_buftypes, vim.bo.buftype)
+        then
+            vim.w.focus_disable = true
+        else
+            vim.w.focus_disable = false
+        end
+    end,
+    desc = 'Disable focus autoresize for BufType',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = augroup,
+    callback = function(_)
+        if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+            vim.b.focus_disable = true
+        else
+            vim.b.focus_disable = false
+        end
+    end,
+    desc = 'Disable focus autoresize for FileType',
+})

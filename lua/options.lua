@@ -17,7 +17,7 @@ vim.o.ruler = true
 vim.o.cmdheight = 2
 -- Reasonable textwidth
 -- vim.o.textwidth = 80
-vim.o.numberwidth = 5
+vim.o.numberwidth = 1
 -- vim.o.columns = 85
 -- treat dash separated words as a word text object"
 vim.o.iskeyword = vim.o.iskeyword .. ",-,_"
@@ -31,6 +31,8 @@ vim.o.title = true
 vim.opt.termguicolors = true
 -- Always display the status line, even if only one window is displayed
 vim.o.laststatus = 2
+
+vim.o.scrollback = 100000
 ------------------------------------------------------------------------
 --                             QOS Stuff                              --
 ------------------------------------------------------------------------

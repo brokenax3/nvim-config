@@ -9,10 +9,11 @@ return {
     init = function()
         local servers = {
             -- "texlab",
-            -- "bashls",
+            "bashls",
             -- "ccls",
             -- "ansiblels",
-            -- "pylsp",
+            "pylsp",
+            "markdown_oxide",
             -- "yamlls",
             -- "terraformls",
             -- "rust_analyzer",
@@ -50,14 +51,13 @@ return {
                             },
                         })
                     end,
-                    capabilities = coq.lsp_ensure_capabilities(),
                     settings = {
                         Lua = {},
                     },
                 })
             elseif server == "pylsp" then
                 local venv_path = os.getenv("VIRTUAL_ENV")
-                local py_path = nil
+                py_path = nil
                 if venv_path ~= nil then
                     py_path = venv_path .. "/bin/python3"
                 else
@@ -66,6 +66,7 @@ return {
                 nvim_lsp[server].setup({
                     settings = {
                         pylsp = {
+                            capabilities = coq.lsp_ensure_capabilities(),
                             plugins = {
                                 pylsp_mypy = {
                                     enabled = true,
@@ -74,11 +75,15 @@ return {
                                     live_mode = true,
                                 },
                                 jedi_completion = { fuzzy = true },
-                                capabilities = coq.lsp_ensure_capabilities(),
                                 pycodestyle = {
                                     enabled = false,
                                     maxLineLength = 120,
                                 },
+                                isort = { enabled = true },
+                                ruff = {
+                                    enabled = true,
+                                    formatEnabled = true,
+                                }
                             },
                         },
                     },
@@ -86,6 +91,7 @@ return {
             else
                 nvim_lsp[server].setup(coq.lsp_ensure_capabilities())
             end
+
 
             -- Check if Server exists
             local cfg = nvim_lsp[server]
