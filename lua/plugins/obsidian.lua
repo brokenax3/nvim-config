@@ -1,5 +1,6 @@
 return {
     "epwalsh/obsidian.nvim",
+    enabled = false,
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     event = "BufReadPre " .. vim.fn.expand("~") .. "/git/mark-brain/**.md",

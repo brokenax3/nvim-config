@@ -16,8 +16,8 @@ return {
             "markdown_oxide",
             -- "yamlls",
             -- "terraformls",
-            -- "rust_analyzer",
-            -- "lua_ls",
+            "rust_analyzer",
+            "lua_ls",
             -- "tsserver",
         }
         local nvim_lsp = require("lspconfig")
