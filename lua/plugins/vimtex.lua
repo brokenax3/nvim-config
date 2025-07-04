@@ -1,6 +1,7 @@
 -- VIMTEX
 return {
     "lervag/vimtex",
+    enabled = false,
     init = function()
         vim.g.vimtex_compiler_progname = "nvr"
         vim.g.vimtex_view_method = "zathura"

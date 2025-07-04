@@ -10,9 +10,6 @@ return {
     {
         "numToStr/Comment.nvim",
         event = "BufEnter",
-        config = function()
-            require("Comment").setup()
-        end,
     },
     {
         "junegunn/vim-easy-align",
@@ -20,13 +17,9 @@ return {
     },
     {
         "ggandor/lightspeed.nvim",
-        config = function()
-            require("lightspeed").setup({
-                ignore_case = true,
-            })
-        end,
         event = "CursorHold",
+        opts = {ignore_case = true}
     },
     { "mhinz/vim-startify", event = "BufEnter" },
-    { "godlygeek/tabular", event = "CursorHold" },
+    { "godlygeek/tabular", cmd = "Tabularize" },
 }

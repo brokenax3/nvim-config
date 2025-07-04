@@ -1,5 +1,3 @@
--- Telescope
-
 return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
@@ -68,6 +66,7 @@ return {
             pickers = {
                 -- Your special builtin config goes in here
                 buffers = {
+                    -- theme = "ivy",
                     sort_lastused = true,
                     mappings = {
                         i = {
@@ -90,7 +89,6 @@ return {
             },
         })
 
-        -- require("telescope").load_extension("projects")
         require("telescope").load_extension("fzf")
         require("telescope").load_extension("neoclip")
         require("telescope").load_extension("zoxide")

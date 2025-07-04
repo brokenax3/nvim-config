@@ -8,16 +8,17 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     init = function()
         local servers = {
-            -- "texlab",
+            "texlab",
             "bashls",
             -- "ccls",
             -- "ansiblels",
             "pylsp",
-            "markdown_oxide",
+            -- "markdown_oxide",
+            "zk"
             -- "yamlls",
             -- "terraformls",
-            "rust_analyzer",
-            "lua_ls",
+            -- "rust_analyzer",
+            -- "lua_ls",
             -- "tsserver",
         }
         local nvim_lsp = require("lspconfig")

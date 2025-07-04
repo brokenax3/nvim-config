@@ -116,7 +116,7 @@ map(
 -- Tasklist
 local notes_dir = "~/git/mark-brain/"
 
-map("n", "<leader>tt", [[<CMD>:e ]] .. notes_dir .. "general/task_list.md<CR>", { silent = true })
+map("n", "<leader>tt", [[<CMD>:e ]] .. notes_dir .. "evc9l0-tasklist.md<CR>", { silent = true })
 -- ---------------- --
 -- General mappings --
 -- ---------------- --
@@ -175,7 +175,7 @@ map("n", "<leader>p", [[<Cmd>Telescope neoclip<CR>]])
 map("v", "<leader>b", [[<Cmd>'<,'>g/^$/d<CR><CMD>nohl<CR>]])
 
 -- Delete current file and close buffer
-map("n", "<leader>df", [[<Cmd>call delete(expand('%')) | bdelete!<CR>]])
+-- map("n", "<leader>df", [[<Cmd>call delete(expand('%')) | bdelete!<CR>]])
 
 -- Scratchpad Shortcuts
 map("n", "<leader>s", "<Cmd>e /Users/markle/.scratchpad.md<CR>")
@@ -184,17 +184,25 @@ map("n", "<leader>s", "<Cmd>e /Users/markle/.scratchpad.md<CR>")
 map("n", "[c", "m'|<Cmd>lua require('treesitter-context').go_to_context()<CR>")
 
 -- Folding
--- map("n", "zR", [[<Cmd>lua require("ufo").openAllFolds<CR>]])
--- map("n", "zM", [[<Cmd>lua require("ufo").closeAllFolds<CR>]])
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
+map('n', 'zr', require('ufo').openFoldsExceptKinds)
+map('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+map('n', 'K', function()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+        -- choose one of coc.nvim and nvim lsp
+        vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+        vim.lsp.buf.hover()
+    end
+end)
 
 -- Quickly rename terminals
 --[[ map("n", "<leader>r", "<Cmd>keepalt file" .. vim.fn.input("Terminal Name :") .. "<CR>") ]]
 
 -- map("n", "<leader>jl", "<Cmd>lua set_jenkins_env()<CR>")
 
---
 -- terminal.nvim
---
 local term_map = require("terminal.mappings")
 map({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
 map("n", "<leader>to", term_map.toggle)
@@ -209,3 +217,16 @@ map("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
 map("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
 map("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
 map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
+
+
+-- Format
+map("n", "<localleader>f", require("conform").format)
+
+-- Minimap
+map('n', '<leader>mc', MiniMap.close)
+map('n', '<leader>mf', MiniMap.toggle_focus)
+map('n', '<leader>mo', MiniMap.open)
+map('n', '<leader>mr', MiniMap.refresh)
+map('n', '<leader>ms', MiniMap.toggle_side)
+map('n', '<leader>mt', MiniMap.toggle)
+

@@ -1,25 +1,41 @@
 return {
-    "Isrothy/neominimap.nvim",
-    enabled = false,
-    lazy = false, -- NOTE: NO NEED to Lazy load
-    -- Optional
-    keys = {
-        { "<leader>mt", "<cmd>Neominimap toggle<cr>", desc = "Toggle minimap" },
-        { "<leader>mf", "<cmd>Neominimap toggleFocus<cr>", desc = "Toggle focus on minimap" },
-        { "<leader>mwt", "<cmd>Neominimap winToggle<cr>", desc = "Toggle minimap for current window" },
-        { "<leader>mwr", "<cmd>Neominimap winRefresh<cr>", desc = "Refresh minimap for current window" },
-        { "<leader>mbt", "<cmd>Neominimap bufToggle<cr>", desc = "Toggle minimap for current buffer" },
-        { "<leader>mbr", "<cmd>Neominimap bufRefresh<cr>", desc = "Refresh minimap for current buffer" },
+    "echasnovski/mini.map",
+    version = false,
+    opts = {
+        -- Symbols used to display data
+        symbols = {
+            -- Scrollbar parts for view and line. Use empty string to disable any.
+            scroll_line = "█",
+            scroll_view = "┃",
+        },
+        -- Window options
+        window = {
+            -- Whether window is focusable in normal way (with `wincmd` or mouse)
+            focusable = true,
+            -- Side to stick ('left' or 'right')
+            side = "right",
+            -- Whether to show count of multiple integration highlights
+            show_integration_count = true,
+            -- Total width
+            width = 10,
+            -- Value of 'winblend' option
+            winblend = 25,
+            -- Z-index
+            zindex = 10,
+        },
     },
-    init = function()
-        vim.opt.wrap = false -- Recommended
-        vim.opt.sidescrolloff = 36 -- It's recommended to set a large value
-        vim.g.neominimap = {
-            auto_enable = true,
-        layout = "float",
-        win_filter = function(winid)
-            return winid == vim.api.nvim_get_current_win()
-        end,
+    config = function(_, opts)
+        local gen_integration = require("mini.map").gen_integration
+
+        opts.symbols.encode = require("mini.map").gen_encode_symbols.dot("4x2")
+
+        opts.integrations = {
+            gen_integration.builtin_search(),
+            gen_integration.diagnostic(),
+            gen_integration.gitsigns(),
         }
+
+        -- Finally, call setup with the fully configured options
+        require("mini.map").setup(opts)
     end,
 }

@@ -1,3 +1,6 @@
+--
+-- Sort all Markdown Headers
+--
 local function extract_headers()
     local bufnr = vim.api.nvim_get_current_buf()
     local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
@@ -30,54 +33,28 @@ local function show_quicklist(headers)
     vim.fn.setqflist({}, "r", { items = items })
 end
 
-local function split_string(input_string, del)
-    local t = {}
-    for l_str in string.gmatch(input_string, "([^" .. del .. "]+)") do
-        table.insert(t, l_str)
-    end
-    return t
-end
-
--- local function reconstruct_mac(t_mac, del)
---     local tmp_mac = ""
---
---     if del == "." then
---         for idx, item in ipairs(t_mac) do
---             if idx % 2 == 1 then
---                 tmp_mac = tmp_mac .. item
---             elseif idx % 2 == 0 then
---                 tmp_mac = tmp_mac .. item .. del
---             end
---         end
---     else
---     end
---
---     return tmp_mac
--- end
-
 function sort_headers_fun()
     local headers = extract_headers()
     -- sort_headers(headers)
     show_quicklist(headers)
 end
 
--- function convert_mac()
---     local line = vim.fn.line(".")
---     local currentMacLine = vim.fn.getline(line)
---
---     local currentFormat = string.match(currentMacLine, ":") and ":" or "."
---     if currentFormat == ":" then
---         t_tmpMac = split_string(currentMacLine, ":")
---         newMacLine = reconstruct_mac(t_tmpMac, ".")
---     else
---         t_tmpMac = split_string(currentMacLine, ".")
---         newMacLine = reconstruct_mac(t_tmpMac, ":")
---     end
---
---     vim.fn.setline(line, newMacLine)
--- end
-
 vim.cmd([[
   command! SortMdHeaders lua sort_headers_fun()
   " command! ConvertMacAddress lua convert_mac()
 ]])
+
+--
+-- Formatting
+--
+vim.api.nvim_create_user_command("Format", function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+    range = {
+      start = { args.line1, 0 },
+      ["end"] = { args.line2, end_line:len() },
+    }
+  end
+  require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })

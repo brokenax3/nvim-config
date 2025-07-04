@@ -80,7 +80,7 @@ vim.o.guifont = "DaddyTimeMono Nerd Font:h14"
 ------------------------------------------------------------------------
 -- Enable your mouse
 vim.o.mouse = "a"
-vim.api.nvim_set_keymap("v", "<LeftRelease>", "\"*ygv", { silent = true })
+vim.api.nvim_set_keymap("v", "<LeftRelease>", '"*ygv', { silent = true })
 ------------------------------------------------------------------------
 --                            Indentation                             --
 ------------------------------------------------------------------------
@@ -127,3 +127,9 @@ vim.o.backup = true
 ------------------------------------------------------------------------
 -- Copy paste between vim and everything else
 vim.api.nvim_set_option("clipboard", "unnamedplus")
+
+------------------------------------------------------------------------
+--                             LaTeX                                  --
+------------------------------------------------------------------------
+-- Latex Flavor
+vim.g.tex_flavor = "latex"
