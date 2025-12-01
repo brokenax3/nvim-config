@@ -8,10 +8,22 @@ return {
             javascript = { "prettierd" },
             markdown = { "prettierd" },
             yaml = { "prettierd" },
-            html = { "prettierd" },
+            html = { "html_beautify" },
+            json = { "prettierd" },
+            robot = { "robocop" },
             terraform = { "terraform_fmt" },
             xml = { "xmllint" },
             ["_"] = { "trim_whitespace" },
+        },
+        formatters = {
+            black = {
+                prepend_args = { "--line-length", "120" },
+            },
+            robocop = {
+                command = "/opt/homebrew/bin/robocop",
+                args = { "format", "$FILENAME" },
+                stdin = false,
+            },
         },
     },
 }

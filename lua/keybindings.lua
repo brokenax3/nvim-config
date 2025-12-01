@@ -184,15 +184,15 @@ map("n", "<leader>s", "<Cmd>e /Users/markle/.scratchpad.md<CR>")
 map("n", "[c", "m'|<Cmd>lua require('treesitter-context').go_to_context()<CR>")
 
 -- Folding
-map('n', 'zR', require('ufo').openAllFolds)
-map('n', 'zM', require('ufo').closeAllFolds)
-map('n', 'zr', require('ufo').openFoldsExceptKinds)
-map('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-map('n', 'K', function()
-    local winid = require('ufo').peekFoldedLinesUnderCursor()
+map("n", "zR", require("ufo").openAllFolds)
+map("n", "zM", require("ufo").closeAllFolds)
+map("n", "zr", require("ufo").openFoldsExceptKinds)
+map("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+map("n", "K", function()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
     if not winid then
         -- choose one of coc.nvim and nvim lsp
-        vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+        vim.fn.CocActionAsync("definitionHover") -- coc.nvim
         vim.lsp.buf.hover()
     end
 end)
@@ -218,15 +218,20 @@ map("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
 map("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
 map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
 
-
 -- Format
 map("n", "<localleader>f", require("conform").format)
 
 -- Minimap
-map('n', '<leader>mc', MiniMap.close)
-map('n', '<leader>mf', MiniMap.toggle_focus)
-map('n', '<leader>mo', MiniMap.open)
-map('n', '<leader>mr', MiniMap.refresh)
-map('n', '<leader>ms', MiniMap.toggle_side)
-map('n', '<leader>mt', MiniMap.toggle)
+map("n", "<leader>mc", MiniMap.close)
+map("n", "<leader>mf", MiniMap.toggle_focus)
+map("n", "<leader>mo", MiniMap.open)
+map("n", "<leader>mr", MiniMap.refresh)
+map("n", "<leader>ms", MiniMap.toggle_side)
+map("n", "<leader>mt", MiniMap.toggle)
 
+-- Copying Paths
+--
+-- Copying
+map("n", "<localleader>yp", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:p:.')) end]])
+map("n", "<localleader>yd", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:h')) end]])
+map("n", "<localleader>yf", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:t:r')) end]])

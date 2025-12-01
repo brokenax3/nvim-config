@@ -58,3 +58,29 @@ vim.api.nvim_create_user_command("Format", function(args)
   end
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
+
+--
+-- Close buffers with non-existent files
+--
+function close_nonexistent_buffers()
+  local closed_count = 0
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(bufnr) then
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      if bufname ~= "" and vim.fn.filereadable(bufname) == 0 and vim.fn.isdirectory(bufname) == 0 then
+        local buf_modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+        if not buf_modified then
+          vim.api.nvim_buf_delete(bufnr, { force = false })
+          closed_count = closed_count + 1
+        end
+      end
+    end
+  end
+  if closed_count > 0 then
+    vim.notify("Closed " .. closed_count .. " buffer(s) with non-existent files", vim.log.levels.INFO)
+  else
+    vim.notify("No non-existent file buffers to close", vim.log.levels.INFO)
+  end
+end
+
+vim.api.nvim_create_user_command("CloseNonexistent", close_nonexistent_buffers, {})

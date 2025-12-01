@@ -1,6 +1,6 @@
-------------------------------------------------------------------------
---                         Vim Configuration                          --
-------------------------------------------------------------------------
+-----------------------
+-- Vim Configuration --
+-----------------------
 -- Better command-line completion
 vim.o.wildmenu = true
 -- Show partial commands in the last line of the screen
@@ -16,7 +16,7 @@ vim.o.ruler = true
 -- More space for displaying messages
 vim.o.cmdheight = 2
 -- Reasonable textwidth
--- vim.o.textwidth = 80
+vim.o.textwidth = 120
 vim.o.numberwidth = 1
 -- vim.o.columns = 85
 -- treat dash separated words as a word text object"
@@ -33,9 +33,10 @@ vim.opt.termguicolors = true
 vim.o.laststatus = 2
 
 vim.o.scrollback = 100000
-------------------------------------------------------------------------
---                             QOS Stuff                              --
-------------------------------------------------------------------------
+
+---------------
+-- QOS Stuff --
+---------------
 vim.o.grepprg = "rg --pretty --vimgrep --smart-case --follow"
 -- Enables syntax highlighing
 -- vim.o.syntax = 'ON'
@@ -55,7 +56,7 @@ vim.o.conceallevel = 1
 -- set custom fold text to system
 -- vim.o.foldmethod = "syntax"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldcolumn = "auto:9" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -70,45 +71,54 @@ vim.o.inccommand = "split"
 -- Completion
 vim.o.completeopt = "menu,menuone,noselect"
 
---Case insensitive searching UNLESS /C or capital in search
+-- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.guifont = "DaddyTimeMono Nerd Font:h14"
+
+-- Only enable vim syntax highlighing inside big files
+vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+
 ------------------------------------------------------------------------
 --                               Mouse                                --
 ------------------------------------------------------------------------
 -- Enable your mouse
 vim.o.mouse = "a"
 vim.api.nvim_set_keymap("v", "<LeftRelease>", '"*ygv', { silent = true })
+
 ------------------------------------------------------------------------
 --                            Indentation                             --
 ------------------------------------------------------------------------
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
+
 -- Makes tabbing smarter will realize you have 2 vs 4
 vim.o.smarttab = true
+
 -- Makes indenting smart
 vim.o.smartindent = true
+
 -- Good auto indent
 vim.o.autoindent = true
+
 --Enable break indent
 vim.o.breakindent = true
 vim.wo.wrap = true
-vim.wo.linebreak = true
+-- vim.wo.linebreak = false
+
 ------------------------------------------------------------------------
 --                            Line Number                             --
 ------------------------------------------------------------------------
 -- Relative Line Numbers
 vim.wo.number = true
 vim.wo.relativenumber = true
--- Cursor Line
 vim.o.cursorline = true
+
 ------------------------------------------------------------------------
 --                              Timeout                               --
 ------------------------------------------------------------------------
---
 -- Faster completion
 vim.o.updatetime = 300
 vim.wo.signcolumn = "yes"
@@ -122,6 +132,7 @@ vim.o.backupdir = datapath .. "/backup/"
 vim.o.directory = datapath .. "/swap/"
 vim.o.undofile = true
 vim.o.backup = true
+
 ------------------------------------------------------------------------
 --                             Clipboard                              --
 ------------------------------------------------------------------------

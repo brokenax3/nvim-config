@@ -1,4 +1,6 @@
--- Configuration for Neovim Completion
+-- 
+--  Configuration for Neovim Completion using coq_nvim
+-- 
 return {
     "ms-jpq/coq_nvim",
     lazy = false,
