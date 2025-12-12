@@ -94,6 +94,25 @@ vim.cmd("colorscheme material")
 --     end,
 -- })
 --
+
+vim.treesitter.query.add_directive("inject-go-tmpl!", function(_, _, bufnr, _, metadata)
+  local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+  local _, _, ext, _ = string.find(fname, ".*%.(%a+)(%.%a+)")
+
+  if ext == "md" then
+    ext = "markdown"
+  end
+
+  metadata["injection.language"] = ext
+
+end, {})
+
+vim.filetype.add({
+  extension = {
+    tmpl = "gotmpl",
+  },
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "robot",
   callback = function()
