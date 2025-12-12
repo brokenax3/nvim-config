@@ -12,4 +12,7 @@ return {
     keys = {
         { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
     },
+    opts = {
+        kind = "split_below_all"
+    }
 }
