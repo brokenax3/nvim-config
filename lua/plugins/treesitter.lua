@@ -24,7 +24,7 @@ return {
             },
         },
         "RRethy/nvim-treesitter-textsubjects",
-        "JoosepAlviste/nvim-ts-context-commentstring",
+        'JoosepAlviste/nvim-ts-context-commentstring'
     },
     opts = function(_, opts)
         local function add(lang)
