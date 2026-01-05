@@ -16,7 +16,7 @@ vim.o.ruler = true
 -- More space for displaying messages
 vim.o.cmdheight = 2
 -- Reasonable textwidth
-vim.o.textwidth = 120
+-- vim.o.textwidth = 120
 vim.o.numberwidth = 1
 -- vim.o.columns = 85
 -- treat dash separated words as a word text object"
@@ -56,7 +56,8 @@ vim.o.conceallevel = 1
 -- set custom fold text to system
 -- vim.o.foldmethod = "syntax"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldcolumn = "auto:9" -- '0' is not bad
+-- vim.o.foldcolumn = "auto:9" -- '0' is not bad
+vim.o.foldcolumn = "0" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -90,6 +91,7 @@ vim.api.nvim_set_keymap("v", "<LeftRelease>", '"*ygv', { silent = true })
 ------------------------------------------------------------------------
 --                            Indentation                             --
 ------------------------------------------------------------------------
+vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
@@ -104,9 +106,9 @@ vim.o.smartindent = true
 vim.o.autoindent = true
 
 --Enable break indent
-vim.o.breakindent = true
+-- vim.o.breakindent = true
 vim.wo.wrap = true
--- vim.wo.linebreak = false
+vim.wo.linebreak = false
 
 ------------------------------------------------------------------------
 --                            Line Number                             --

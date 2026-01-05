@@ -24,7 +24,7 @@ return {
             },
         },
         "RRethy/nvim-treesitter-textsubjects",
-        'JoosepAlviste/nvim-ts-context-commentstring'
+        "JoosepAlviste/nvim-ts-context-commentstring",
     },
     opts = function(_, opts)
         local function add(lang)
@@ -48,6 +48,7 @@ return {
     end,
     config = function()
         require("nvim-treesitter.configs").setup({
+            disable = { "json" },
             ensure_installed = {
                 "c",
                 "cpp",
@@ -80,7 +81,9 @@ return {
             highlight = {
                 enable = true,
                 -- additional_vim_regex_highlighting = { "markdown" },
-                disable = true,
+                -- cond = function(lang, bufnr) -- Disable in large C++ buffers
+                --     return not (lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000)
+                -- end,
             },
             indent = {
                 enable = true,

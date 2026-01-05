@@ -15,6 +15,7 @@ vim.g.loaded_tutor_mode_plugin = 1
 require("options")
 require("lazy_options")
 require("custom_commands")
+require("custom_commands_zk")
 require("keybindings")
 
 vim.api.nvim_command([[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]])
@@ -31,36 +32,35 @@ vim.g.suda_smart_edit = 1
 vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 vim.fn.setenv("DYLD_FALLBACK_LIBRARY_PATH", "/opt/homebrew/lib")
 
-vim.g.material_style = "deep ocean"
-vim.cmd("colorscheme material")
+-- vim.g.material_style = "deep ocean"
+vim.cmd("colorscheme citruszest")
 
 -- Treesitter and Large Files
--- local function augroup(name)
---   return vim.api.nvim_create_augroup(name, { clear = true })
--- end
+-- local function augroup(name) return vim.api.nvim_create_augroup(name, { clear = true }) end
 --
 -- vim.filetype.add({
---   pattern = {
---     [".*"] = {
---       function(path, buf)
---         return vim.bo[buf].filetype ~= "bigfile" and path and vim.fn.getfsize(path) > vim.g.bigfile_size and "bigfile"
---           or nil
---       end,
+--     pattern = {
+--         [".*"] = {
+--             function(path, buf)
+--                 return vim.bo[buf].filetype ~= "bigfile"
+--                         and path
+--                         and vim.fn.getfsize(path) > vim.g.bigfile_size
+--                         and "bigfile"
+--                     or nil
+--             end,
+--         },
 --     },
---   },
 -- })
 --
 -- vim.api.nvim_create_autocmd({ "Filetype" }, {
---   group = augroup("bigfile"),
---   pattern = "bigfile",
---   callback = function(ev)
---     vim.b.minianimate_disable = true
---     vim.schedule(function()
---       vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or ""
---     end)
---   end,
+--     group = augroup("bigfile"),
+--     pattern = "bigfile",
+--     callback = function(ev)
+--         vim.b.minianimate_disable = true
+--         vim.schedule(function() vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or "" end)
+--     end,
 -- })
-
+--
 -- local big_file_nuke_group = vim.api.nvim_create_augroup("big-file-nuke", { clear = true })
 -- local huge_file = ""
 -- vim.api.nvim_create_autocmd("BufReadPre", {
@@ -93,29 +93,23 @@ vim.cmd("colorscheme material")
 --         if relevant_file == huge_file then vim.cmd.filetype("on") end
 --     end,
 -- })
---
 
 vim.treesitter.query.add_directive("inject-go-tmpl!", function(_, _, bufnr, _, metadata)
-  local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
-  local _, _, ext, _ = string.find(fname, ".*%.(%a+)(%.%a+)")
+    local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+    local _, _, ext, _ = string.find(fname, ".*%.(%a+)(%.%a+)")
 
-  if ext == "md" then
-    ext = "markdown"
-  end
+    if ext == "md" then ext = "markdown" end
 
-  metadata["injection.language"] = ext
-
+    metadata["injection.language"] = ext
 end, {})
 
 vim.filetype.add({
-  extension = {
-    tmpl = "gotmpl",
-  },
+    extension = {
+        tmpl = "gotmpl",
+    },
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "robot",
-  callback = function()
-    vim.bo.commentstring = "# %s"
-  end
+    pattern = "robot",
+    callback = function() vim.bo.commentstring = "# %s" end,
 })

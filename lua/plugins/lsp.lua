@@ -22,12 +22,13 @@ return {
             "pylsp",
             -- "markdown_oxide",
             "zk",
-            -- "yamlls",
+            "yamlls",
             -- "terraformls",
             -- "rust_analyzer",
             -- "lua_ls",
+            "tombi",
             "gopls",
-            "tsserver",
+            -- "tsserver",
         }
         local nvim_lsp = require("lspconfig")
 
@@ -61,6 +62,16 @@ return {
                                     enabled = true,
                                     formatEnabled = true,
                                 },
+                            },
+                        },
+                    },
+                })
+            elseif server == "yamlls" then
+                vim.lsp.config(server, {
+                    settings = {
+                        yaml = {
+                            schemas = {
+                                ["/Users/markle/git/maybank/validation/.yaml-schema.yaml"] = "*.nac.yaml",
                             },
                         },
                     },

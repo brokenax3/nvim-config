@@ -3,16 +3,18 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
+            go = { "goimports", "gofmt" },
             python = { "isort", "black" },
             rust = { "rustfmt", lsp_format = "fallback" },
             javascript = { "prettierd" },
             markdown = { "prettierd" },
-            yaml = { "prettierd" },
+            yaml = { "yamlfix" },
             html = { "html_beautify" },
             json = { "prettierd" },
             robot = { "robocop" },
             terraform = { "terraform_fmt" },
             xml = { "xmllint" },
+            toml = { "tombi" },
             ["_"] = { "trim_whitespace" },
         },
         formatters = {
@@ -23,6 +25,9 @@ return {
                 command = "/opt/homebrew/bin/robocop",
                 args = { "format", "$FILENAME" },
                 stdin = false,
+            },
+            yamlfix = {
+                prepend_args = { "--config-file", "/Users/markle/.yamlfix.toml" },
             },
         },
     },

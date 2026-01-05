@@ -99,12 +99,12 @@ map("n", "<leader>fk", [[<Cmd>lua require("telescope.builtin").keymaps()<CR>]], 
 -- Search Directories
 map("n", "<leader>fd", [[<Cmd>lua require("telescope").extensions.zoxide.list({})<CR>]], { silent = true })
 -- Telescope Selection
-map(
-    "n",
-    "<leader>tl",
-    [[<Cmd>lua require("telescope.builtin").builtin()]] .. [[, include_extensions = true}))<CR>]],
-    { silent = true }
-)
+-- map(
+--     "n",
+--     "<leader>tl",
+--     [[<Cmd>lua require("telescope.builtin").builtin()]] .. [[, include_extensions = true}))<CR>]],
+--     { silent = true }
+-- )
 -- Markdown Headings in Quickfix
 map(
     "n",
@@ -116,7 +116,7 @@ map(
 -- Tasklist
 local notes_dir = "~/git/mark-brain/"
 
-map("n", "<leader>tt", [[<CMD>:e ]] .. notes_dir .. "evc9l0-tasklist.md<CR>", { silent = true })
+map("n", "<leader>ni", [[<CMD>:e ]] .. notes_dir .. "00-meta/master-index.md<CR>", { silent = true })
 -- ---------------- --
 -- General mappings --
 -- ---------------- --
@@ -203,20 +203,20 @@ end)
 -- map("n", "<leader>jl", "<Cmd>lua set_jenkins_env()<CR>")
 
 -- terminal.nvim
-local term_map = require("terminal.mappings")
-map({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
-map("n", "<leader>to", term_map.toggle)
-map("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }))
-map("n", "<leader>tr", term_map.run)
-map("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }))
-map("n", "<leader>tk", term_map.kill)
-map("n", "<leader>t]", term_map.cycle_next)
-map("n", "<leader>t[", term_map.cycle_prev)
-map("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }))
-map("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
-map("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
-map("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
-map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
+-- local term_map = require("terminal.mappings")
+-- map({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
+-- map("n", "<leader>to", term_map.toggle)
+-- map("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }))
+-- map("n", "<leader>tr", term_map.run)
+-- map("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }))
+-- map("n", "<leader>tk", term_map.kill)
+-- map("n", "<leader>t]", term_map.cycle_next)
+-- map("n", "<leader>t[", term_map.cycle_prev)
+-- map("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }))
+-- map("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
+-- map("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
+-- map("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
+-- map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
 
 -- Format
 map("n", "<localleader>f", require("conform").format)
@@ -235,3 +235,6 @@ map("n", "<leader>mt", MiniMap.toggle)
 map("n", "<localleader>yp", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:p:.')) end]])
 map("n", "<localleader>yd", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:h')) end]])
 map("n", "<localleader>yf", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:t:r')) end]])
+
+-- NeoTree
+map("n", "<leader>t", [[<CMD>Neotree<CR>]], { silent = true })

@@ -4,6 +4,10 @@ return {
         event = "CursorHold",
     },
     {
+        "tpope/vim-eunuch",
+        event = "CursorHold",
+    },
+    {
         "tpope/vim-repeat",
         event = "CursorHold",
     },

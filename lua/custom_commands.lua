@@ -67,7 +67,7 @@ function close_nonexistent_buffers()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
       local bufname = vim.api.nvim_buf_get_name(bufnr)
-      if bufname ~= "" and vim.fn.filereadable(bufname) == 0 and vim.fn.isdirectory(bufname) == 0 then
+      if not string.find(bufname, "term") and bufname ~= "" and vim.fn.filereadable(bufname) == 0 and vim.fn.isdirectory(bufname) == 0 then
         local buf_modified = vim.api.nvim_buf_get_option(bufnr, "modified")
         if not buf_modified then
           vim.api.nvim_buf_delete(bufnr, { force = false })
