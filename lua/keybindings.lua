@@ -4,6 +4,9 @@ local map = vim.keymap.set
 -- ---------------------- --
 -- Functionality mappings --
 -- ---------------------- --
+map("n", "<leader>q", [[<CMD>bw<CR>]], { silent = true })
+map("n", "<Backspace>", [[<C-w>q]], { silent = true })
+map("n", "<leader><backspace>", [[<CMD>bp\|bd \#<CR>]], { silent = true })
 --  List open buffers
 local telescope_buffers = [[<Cmd>lua require("telescope.builtin").buffers()<CR>]]
 
@@ -115,7 +118,6 @@ map(
 
 -- Tasklist
 local notes_dir = "~/git/mark-brain/"
-
 map("n", "<leader>ni", [[<CMD>:e ]] .. notes_dir .. "00-meta/master-index.md<CR>", { silent = true })
 -- ---------------- --
 -- General mappings --
@@ -166,7 +168,6 @@ map("n", "<localleader>d", [[<Cmd>lua vim.lsp.buf.definition()<CR>]])
 -- ------------------ --
 -- Source keybindings
 map("n", "<F5>", "<Cmd>source ~/.config/nvim/lua/keybindings.lua<CR>")
-map("n", "<F2>", "<Cmd>lua print('Test')<CR>")
 
 -- Clipboard
 map("n", "<leader>p", [[<Cmd>Telescope neoclip<CR>]])
@@ -238,3 +239,6 @@ map("n", "<localleader>yf", [[<CMD>luavim.fn.setreg('+', vim.fn.expand('%:t:r'))
 
 -- NeoTree
 map("n", "<leader>t", [[<CMD>Neotree<CR>]], { silent = true })
+
+-- TODO Comments
+map("n", "<leader>c", [[<CMD>Todo<CR>]], { silent = true })
