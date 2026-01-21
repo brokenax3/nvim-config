@@ -33,8 +33,13 @@ vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 vim.fn.setenv("DYLD_FALLBACK_LIBRARY_PATH", "/opt/homebrew/lib")
 
 -- vim.g.material_style = "deep ocean"
-vim.cmd("colorscheme citruszest")
+vim.cmd("colorscheme gruvbox-material")
 
+vim.filetype.add({
+  extension = {
+    j2 = 'jinja',
+  }
+})
 -- Treesitter and Large Files
 -- local function augroup(name) return vim.api.nvim_create_augroup(name, { clear = true }) end
 --
