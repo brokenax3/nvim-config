@@ -1,8 +1,12 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+local zk = require("zk")
+local commands = require("zk.commands")
+local notes_dir = "/Users/markle/git/mark-brain"
+
+commands.add("ZkDaily", function()
+  commands.get("ZkNew")({ dir = notes_dir .. "/02-journal" })
+end)
+
+commands.add("ZkInbox", function(options)
+  options = vim.tbl_extend("force", { orphan = true }, options or {})
+  commands.get("ZkNew")(options, { dir = notes_dir .. "/01-inbox" })
+end)
