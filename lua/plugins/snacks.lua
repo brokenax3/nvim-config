@@ -8,10 +8,12 @@ return {
     },
     picker = {
       files = {
+        cmd = "rg",
         ignored = true,
       },
       sources = {
         explorer = {
+          hidden = true,
           on_show = function(picker)
             local Tree = require("snacks.explorer.tree")
             local root = Tree:find(picker:cwd())
