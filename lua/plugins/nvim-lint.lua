@@ -3,7 +3,6 @@ return {
   opts = {
     linters = {
       ["markdownlint-cli2"] = {
-        -- args = { "-", "--config", vim.env.HOME .. "/.config/LazyVimDev/.markdownlint-cli2.yaml", "--" },
         prepend_args = { "--config", vim.env.HOME .. "/.config/LazyVimDev/.markdownlint-cli2.yaml", "--" },
       },
     },
