@@ -7,26 +7,39 @@ return {
       trash = true, -- Use the system trash when deleting files
     },
     picker = {
+      main = {
+        file = false,
+        current = true,
+      },
+      hidden = true,
       files = {
         cmd = "rg",
         ignored = true,
+        hidden = true,
       },
       sources = {
         explorer = {
           hidden = true,
-          on_show = function(picker)
-            local Tree = require("snacks.explorer.tree")
-            local root = Tree:find(picker:cwd())
-            local open_recursive = false
-            Tree:walk(root, function(node)
-              if node.dir and (open_recursive or root == node.parent) then
-                Tree:open(node.path)
-                Tree:expand(node)
-              end
-            end, { all = open_recursive })
-          end,
+        },
+        buffers = {
+          current = false,
         },
       },
+      matcher = {
+        cwd_bonus = true,
+      },
+    },
+  },
+  keys = {
+    {
+      "<leader>e",
+      function()
+        if Snacks.picker.get({ source = "explorer" })[1] == nil then
+          Snacks.picker.explorer()
+        elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == false then
+          Snacks.picker.get({ source = "explorer" })[1]:focus()
+        end
+      end,
     },
   },
 }

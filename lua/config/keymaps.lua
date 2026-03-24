@@ -8,3 +8,10 @@ map("n", ";", ":")
 map("n", "<Backspace>", [[<C-w>q]])
 -- Escape Terminal
 map("t", "<C-g>", "<C-\\><C-n>")
+
+-- INFO: Snacks --
+vim.keymap.set("n", "<leader>mh", function()
+  Snacks.picker.lines({
+    pattern = "^#", -- Regex to match lines starting with a hash
+  })
+end, { desc = "Markdown Headers" })

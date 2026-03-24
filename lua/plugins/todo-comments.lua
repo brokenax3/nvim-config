@@ -17,10 +17,20 @@ return {
       PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
       NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
       TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+      QUESTION = { icon = "?", color = "info" },
       PRIORITY1 = { icon = "1", color = "error" },
       PRIORITY2 = { icon = "2", color = "warning" },
       PRIORITY3 = { icon = "3", color = "info" },
       PRIORITY4 = { icon = "☺", color = "hint" },
+    },
+  },
+  keys = {
+    {
+      "<leader>st",
+      function()
+        Snacks.picker.todo_comments()
+      end,
+      desc = "Todo",
     },
   },
 }
