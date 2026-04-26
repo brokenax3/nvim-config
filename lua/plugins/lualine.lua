@@ -2,6 +2,8 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = {
-    theme = "gruvbox-material",
+    options = {
+      theme = "base16",
+    },
   },
 }

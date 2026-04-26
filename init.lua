@@ -4,3 +4,5 @@ require("config.filetype")
 -- require("config.keymaps")
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./custom-snippets" } })
+
+require("matugen").setup()
