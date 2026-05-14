@@ -8,7 +8,7 @@ return {
     },
     picker = {
       main = {
-        file = false,
+        file = true,
         current = true,
       },
       hidden = true,
@@ -20,6 +20,7 @@ return {
       sources = {
         explorer = {
           hidden = true,
+          main = { current = false },
         },
         buffers = {
           current = false,
@@ -38,6 +39,8 @@ return {
           Snacks.picker.explorer()
         elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == false then
           Snacks.picker.get({ source = "explorer" })[1]:focus()
+        elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == true then
+          vim.cmd("wincmd p")
         end
       end,
     },

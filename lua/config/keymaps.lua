@@ -10,6 +10,11 @@ map("n", "<Backspace>", [[<C-w>q]])
 map("t", "<C-g>", "<C-\\><C-n>")
 
 -- INFO: Snacks --
+vim.keymap.set("n", "<leader>ff", function()
+  Snacks.picker.files({ ignored = true, hidden = true })
+end, { desc = "Find Files (root dir)" })
+
+
 vim.keymap.set("n", "<leader>mh", function()
   Snacks.picker.lines({
     pattern = "^#", -- Regex to match lines starting with a hash
