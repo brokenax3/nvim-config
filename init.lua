@@ -15,6 +15,7 @@ require("config.lazy")
 require("config.options")
 require("config.keybindings")
 require("config.filetypes")
+require("config.autocmds")
 
 -- Set Environment Variables for Ripgrep
 vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")

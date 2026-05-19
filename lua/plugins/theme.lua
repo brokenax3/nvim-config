@@ -6,6 +6,7 @@ return {
         overrides = function(colors)
             theme = colors.theme
             return {
+                ["RenderMarkdownDash"] = { fg = theme.rainbow.rainbow1 },
                 -- ["@markup.heading.1.markdown"] = { bg = theme.rainbow.rainbow1 },
                 -- ["@markup.heading.2.markdown"] = { bg = theme.rainbow.rainbow2 },
                 -- ["@markup.heading.3.markdown"] = { bg = theme.rainbow.rainbow3 },
@@ -14,5 +15,7 @@ return {
             }
         end,
     },
-    init = function() vim.cmd.colorscheme("kanagawa-paper-ink") end,
+    init = function()
+        vim.cmd.colorscheme("kanagawa-paper-ink")
+    end,
 }

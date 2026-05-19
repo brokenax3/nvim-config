@@ -15,10 +15,16 @@ return {
         },
         picker = {
             enabled = true,
+            main = { file = false },
             files = {
                 cmd = "rg",
                 ignored = true,
                 hidden = true,
+            },
+            sources = {
+                buffers = {
+                    current = false,
+                },
             },
         },
         quickfile = { enabled = true },
@@ -28,9 +34,6 @@ return {
             explorer = {
                 hidden = true,
                 main = { current = false },
-            },
-            buffers = {
-                current = false,
             },
         },
         statuscolumn = { enabled = true },
