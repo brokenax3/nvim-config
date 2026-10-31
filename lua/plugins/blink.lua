@@ -1,8 +1,8 @@
-local frienly_snippets = {
-    -- "rafamadriz/friendly-snippets",
-    "ruslanSorokin/friendly-snippets",
-    branch = "fix/do-not-include-global-into-md-and-html",
-}
+-- local frienly_snippets = {
+--     -- "rafamadriz/friendly-snippets",
+--     "ruslanSorokin/friendly-snippets",
+--     branch = "fix/do-not-include-global-into-md-and-html",
+-- }
 
 ---@module "lazy"
 ---@type LazySpec
@@ -11,8 +11,9 @@ return {
     lazy = false,
     dependencies = {
         "saghen/blink.lib",
+        "rafamadriz/friendly-snippets",
         -- optional: provides snippets for the snippet source
-        { friendly_snippets },
+        -- { friendly_snippets },
         "mikavilpas/blink-ripgrep.nvim",
     },
     build = function()
@@ -46,10 +47,10 @@ return {
         sources = {
             default = {
                 "lsp",
-                "path",
-                "snippets",
                 "buffer",
-                "ripgrep",
+                "snippets",
+                "path",
+                -- "ripgrep",
             },
             providers = {
                 -- 👇🏻👇🏻 add the ripgrep provider config below
@@ -64,12 +65,13 @@ return {
             },
         },
 
+        snippets = { preset = "luasnip" },
+
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
         -- You may use a lua implementation instead by using `implementation = "lua"`
         -- See the fuzzy documentation for more information
         fuzzy = { implementation = "rust" },
         cmdline = {
-            keymap = { preset = "inherit" },
             completion = { menu = { auto_show = true } },
         },
     },

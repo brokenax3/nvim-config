@@ -17,6 +17,9 @@ require("config.keybindings")
 require("config.filetypes")
 require("config.autocmds")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./custom-snippets" } })
+
 -- Set Environment Variables for Ripgrep
 vim.fn.setenv("RIPGREP_CONFIG_PATH", "/Users/markle/.ripgreprc")
 vim.fn.setenv("DYLD_FALLBACK_LIBRARY_PATH", "/opt/homebrew/lib")

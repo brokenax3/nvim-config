@@ -1,0 +1,14 @@
+{
+  "two-column": {
+    "prefix": "2col",
+    "body": [
+      "<div class=\"two-columns\">",
+      "<div>",
+      "</div>",
+      "<div>",
+      "</div>",
+      "</div>"
+    ],
+    "description": "two-column layout"
+  }
+}

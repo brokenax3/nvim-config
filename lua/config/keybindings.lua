@@ -18,4 +18,4 @@ map("n", "<C-i>", "<C-i>")
 -- Terminal Escape
 map("t", "<C-g>", "<C-\\><C-n>")
 
-map('n', 'q:', '<nop>')
+map("n", "q:", "<nop>")

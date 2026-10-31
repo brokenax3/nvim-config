@@ -5,7 +5,7 @@ return {
     keys = {
         {
             -- Customize or remove this keymap to your liking
-            "<leader>f",
+            "<leader>cf",
             function() require("conform").format({ async = true }) end,
             mode = "",
             desc = "Format buffer",
@@ -22,9 +22,9 @@ return {
             rust = { "rustfmt", lsp_format = "fallback" },
             javascript = { "prettierd" },
             markdown = { "prettierd" },
-            yaml = { "yamlfix" },
+            yaml = { "yamlfmt" },
             html = { "html_beautify" },
-            json = { "prettierd" },
+            json = { "jq" },
             robot = { "robocop" },
             terraform = { "terraform_fmt" },
             xml = { "xmllint" },
@@ -39,13 +39,7 @@ return {
                 command = "/opt/homebrew/bin/robocop",
                 args = { "format", "$FILENAME" },
                 stdin = false,
-            },
-            yamlfix = {
-                prepend_args = { "--config-file", "/Users/markle/.yamlfix.toml" },
-            },
+            }
         },
-    },
-    keys = {
-        { "<leader>cf", function() require("conform").format() end },
-    },
+    }
 }

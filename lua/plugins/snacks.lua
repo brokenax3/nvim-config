@@ -4,9 +4,13 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-        bigfile = { enabled = true },
+        bigfile = { enabled = false },
         dashboard = { enabled = true },
-        explorer = { enabled = true },
+        explorer = {
+            enabled = true,
+            replace_netrw = true,
+            trash = true,
+        },
         indent = { enabled = true },
         input = { enabled = true },
         notifier = {
@@ -26,6 +30,10 @@ return {
                     current = false,
                 },
             },
+            explorer = {
+                follow_file = true,
+                auto_close = false,
+            },
         },
         quickfile = { enabled = true },
         scope = { enabled = true },
@@ -40,7 +48,7 @@ return {
         words = { enabled = true },
         styles = {
             notification = {
-                wo = { wrap = true } -- Wrap notifications
+                wo = { wrap = true }, -- Wrap notifications
             },
         },
     },
@@ -74,13 +82,13 @@ return {
         {
             "<leader>e",
             function()
-                if Snacks.picker.get({ source = "explorer" })[1] == nil then
-                    Snacks.picker.explorer()
-                elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == false then
-                    Snacks.picker.get({ source = "explorer" })[1]:focus()
-                elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == true then
-                    vim.cmd("wincmd p")
-                end
+                -- if Snacks.picker.get({ source = "explorer" })[1] == nil then
+                Snacks.picker.explorer()
+                --     elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == false then
+                --         Snacks.picker.get({ source = "explorer" })[1]:focus()
+                --     elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == true then
+                --         vim.cmd("wincmd p")
+                --     end
             end,
             desc = "File Explorer",
         },

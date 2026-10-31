@@ -4,6 +4,7 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
+        enabled = false,
         heading = {
             border = true,
             position = "inline",
@@ -13,7 +14,11 @@ return {
         code = {
             style = "full",
             conceal_delimiters = false,
-            border = "thick"
+            border = "thick",
         },
+        link = { enabled = false },
+    },
+    keys = {
+        { "<leader>mr", function() require("render-markdown").toggle() end, desc = "Render Markdown Toggle" },
     },
 }

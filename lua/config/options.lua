@@ -46,4 +46,14 @@ opt.directory = datapath .. "/swap/"
 opt.undofile = true
 opt.backup = true
 
+-- INFO: Folding
+opt.foldcolumn = "0"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
 
+-- INFO: Statusline
+vim.opt.laststatus = 3
+
+-- INFO: Splits
+vim.opt.splitkeep = "screen"

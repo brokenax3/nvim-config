@@ -4,6 +4,7 @@ return {
   opts = {
     signs = true, -- show icons in the signs column
     sign_priority = 8, -- sign priority
+    comments_only = false,
     -- keywords recognized as todo comments
     keywords = {
       FIX = {
